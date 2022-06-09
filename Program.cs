@@ -9,9 +9,9 @@ namespace az204_cosmosdemo
     class Program
     {
         // The Azure Cosmos DB endpoint for running this sample.
-        private static readonly string EndpointUri = "https://________________.documents.azure.com:443/";
+        private static readonly string EndpointUri = "https://___________________.documents.azure.com:443/";
         // The primary key for the Azure Cosmos account.
-        private static readonly string PrimaryKey = "________________________________5LUyEg==";
+        private static readonly string PrimaryKey = "B1kKGeMn9___________________VVY1___________________efpHZY0tJk1pEA==";
 
         // The Cosmos client instance
         private CosmosClient cosmosClient;
@@ -25,6 +25,7 @@ namespace az204_cosmosdemo
         // The name of the database and container we will create
         private string databaseId = "az204Database";
         private string containerId = "az204Container";
+
         public static async Task Main(string[] args)
         {
               // Set console encoding to unicode
@@ -94,9 +95,9 @@ namespace az204_cosmosdemo
         private async Task InsertData()
         {
              Console.Write("\n請輸入資料筆數(ex. 30): ");
-            var n=Console.ReadLine();
-
-            for (int i = 0; i < int.Parse(n); i++)
+            var tmp=Console.ReadLine();
+            var n=int.Parse(tmp);
+            for (int i = 0; i < n; i++)
             {
                 var person = getFakeData();
                 var name = person.name.ToString().Split(" ");
@@ -113,7 +114,7 @@ namespace az204_cosmosdemo
                 var item = await this.container.CreateItemAsync<DataRecord>(rec, new PartitionKey(lastName));
                 Console.WriteLine("Created item {0}: \n{1}\n", i, rec.FirstName );
             }
-            Console.WriteLine("\n100 items has been added...");
+            Console.WriteLine($"\n{n} items has been added...");
         }
 
         private async Task QueryData()
@@ -133,7 +134,7 @@ namespace az204_cosmosdemo
                 FeedResponse<DataRecord> currentResultSet = queryResultSetIterator.ReadNextAsync().Result;
                 foreach (DataRecord DataRecord in currentResultSet)
                 {
-                    Console.WriteLine("\nitem {0}", DataRecord.FullName);
+                    Console.WriteLine("\n result item : {0}", DataRecord.FullName);
                 }
             }
         }
