@@ -73,14 +73,14 @@ namespace az204_cosmosdemo
         {
             // Create a new database
             this.database = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(databaseId);
-            Console.WriteLine("Created Database: {0}\n", this.database.Id);
+            Console.WriteLine("建立 Database: {0}\n", this.database.Id);
         }
 
         private async Task CreateContainerAsync()
         {
             // Create a new container
             this.container = await this.database.CreateContainerIfNotExistsAsync(containerId, "/LastName");
-            Console.WriteLine("Created Container: {0}\n", this.container.Id);
+            Console.WriteLine("建立 Container: {0}\n", this.container.Id);
         }
 
         private dynamic getFakeData()
@@ -94,7 +94,7 @@ namespace az204_cosmosdemo
 
         private async Task InsertData()
         {
-             Console.Write("\n請輸入資料筆數(ex. 30): ");
+             Console.Write("\n請輸入要動態產生的資料筆數(ex. 30): ");
             var tmp=Console.ReadLine();
             var n=int.Parse(tmp);
             for (int i = 0; i < n; i++)
@@ -119,7 +119,7 @@ namespace az204_cosmosdemo
 
         private async Task QueryData()
         {
-            Console.Write("\n請輸入查詢關鍵字(ex. a): ");
+            Console.Write("\n請輸入查詢關鍵字(例如. ab): ");
             var key=Console.ReadLine();
             //查詢
             var sqlQueryText = "SELECT * FROM c WHERE CONTAINS(c.FullName,'"+key+"') ";
@@ -134,7 +134,7 @@ namespace az204_cosmosdemo
                 FeedResponse<DataRecord> currentResultSet = queryResultSetIterator.ReadNextAsync().Result;
                 foreach (DataRecord DataRecord in currentResultSet)
                 {
-                    Console.WriteLine("\n result item : {0}", DataRecord.FullName);
+                    Console.WriteLine("\n符合的項目 : {0}", DataRecord.FullName);
                 }
             }
         }
