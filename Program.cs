@@ -9,9 +9,9 @@ namespace az204_cosmosdemo
     class Program
     {
         // The Azure Cosmos DB endpoint for running this sample.
-        private static readonly string EndpointUri = "https://___________________.documents.azure.com:443/";
+        private static readonly string EndpointUri = "https://___________.documents.azure.com:443/";
         // The primary key for the Azure Cosmos account.
-        private static readonly string PrimaryKey = "B1kKGeMn9___________________VVY1___________________efpHZY0tJk1pEA==";
+        private static readonly string PrimaryKey = "4qZoWiSUj0eoFDkF6Zhiqo________________DbrXcAxg==";
 
         // The Cosmos client instance
         private CosmosClient cosmosClient;
